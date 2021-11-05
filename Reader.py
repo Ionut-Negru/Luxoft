@@ -34,8 +34,20 @@ def read_json(file_name=""):
 
             if len(health) > 0:
                 health =  health[0]['healthInst']['attributes']
-                result.append(CloudCtx(cloudData['name'],cloudData['tenantName'],cloudData['description'],cloudData['nameAlias'],cloudData['ctxProfileName'],HealthInst(health['cur'],health['maxSev']),lastModified))
+                result.append(CloudCtx(cloudData['name'],
+                                       cloudData['tenantName'],
+                                       cloudData['description'],
+                                       cloudData['nameAlias'],
+                                       cloudData['ctxProfileName'],
+                                       HealthInst(health['cur'],health['maxSev']),
+                                       lastModified))
             else:
-                result.append(CloudCtx(cloudData['name'],cloudData['tenantName'],cloudData['description'],cloudData['nameAlias'],cloudData['ctxProfileName'],HealthInst(current_health=0),lastModified))
+                result.append(CloudCtx(cloudData['name'],
+                                       cloudData['tenantName'],
+                                       cloudData['description'],
+                                       cloudData['nameAlias'],
+                                       cloudData['ctxProfileName'],
+                                       HealthInst(current_health=0),
+                                       lastModified))
 
     return result

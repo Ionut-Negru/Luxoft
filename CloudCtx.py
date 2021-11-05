@@ -18,11 +18,18 @@ class CloudCtx:
 
     def __repr__(self):
         empty = lambda x: '-' if x == "" else x
-        straux =  "Name = "+empty(self.name)+"\n"+"Tenant name = "+empty(self.tenant_name)+"\n"+"Health = " +self.HealthInst.displayed_health()+"\n"+"Description = "+empty(self.description)+"\n"+"Name alias = "+empty(self.name_alias)+"\n"+"CTX profile name = "+empty(self.ctx_profile_name)
+        straux =  "Name = "+empty(self.name)+"\n"+\
+                  "Tenant name = "+empty(self.tenant_name)+"\n"+\
+                  "Health = " + self.HealthInst.displayed_health()+ "\n" +\
+                  "Description = " + empty(self.description)+ "\n" +\
+                  "Name alias = " + empty(self.name_alias)+ "\n" +\
+                  "CTX profile name = " + empty(self.ctx_profile_name)
         if(self.lastModified.hour > 12):
             aux = self.lastModified
             aux = self.lastModified - datetime.timedelta(hours=12)
-            return straux + "\n" + "Last modified : " + str(aux.day) + "/" + str(aux.month) + "/" + str(aux.year) + " " + str(aux.hour) + ":" + str(aux.minute) + ":"+ str(aux.second) +" PM"
+            return straux + "\n" + "Last modified : " + str(aux.day) + "/" + \
+                   str(aux.month) + "/" + str(aux.year) + " " + str(aux.hour) +\
+                   ":" + str(aux.minute) + ":"+ str(aux.second) +" PM"
         else:
             return straux + "\n" + "Last modified : " + str(self.lastModified.day) + "/" + str(
                 self.lastModified.month) + "/" + str(self.lastModified.year) + " " + str(
