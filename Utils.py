@@ -2,7 +2,7 @@
 """This file contains utilitary functions for the project"""
 
 
-def show_cloudCtx_data(data=[]):
+def show_cloud_ctx_data(data=[]):
     for x in data:
         print(x)
         print('*'*60)

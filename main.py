@@ -17,10 +17,10 @@ if __name__ == '__main__':
     for x in sys.argv:
         print(x)
     CloudCtx.check_number_of_entries()
-    show_cloudCtx_data(data)
+    show_cloud_ctx_data(data)
     CloudCtx.check_number_of_entries()
     sort_by_current_health(data)
-    show_cloudCtx_data(data)
+    show_cloud_ctx_data(data)
     CloudCtx.check_number_of_entries()
     sort_by_last_modified_date(data)
-    show_cloudCtx_data(data)
+    show_cloud_ctx_data(data)

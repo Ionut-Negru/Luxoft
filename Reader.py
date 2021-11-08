@@ -6,12 +6,11 @@ from CloudCtx import CloudCtx
 
 def read_json(file_name=""):
     result = []
-    try:
-        data = open(file_name,)
-        data = json.load(data)
-    except FileNotFoundError:
-        print("There is no file inside the project folder,try using the full path ")
-    else:
+    with open(file_name, "r") as json_file:
+        data = json.load(json_file)
         for x in data['imdata']:
-            result.append(CloudCtx(x))
+            entry = CloudCtx()
+            entry.parse_json(x)
+            result.append(entry)
+
     return result
