@@ -5,11 +5,6 @@ import datetime
 from HealthInst import HealthInst
 
 
-def replace_empty_entries(value=""):
-    if value == '':
-        return '-'
-    else:
-        return value
 
 
 class CloudCtx:
@@ -30,11 +25,11 @@ class CloudCtx:
         try:
             self.lastModified = datetime.datetime.strptime(json_entry['hcloudCtx']['attributes']['modTs'],
                                                            '%Y-%m-%dT%H:%M:%S.%f%z')
-            self.name = replace_empty_entries(json_entry['hcloudCtx']['attributes']['name'])
-            self.tenant_name = replace_empty_entries(json_entry['hcloudCtx']['attributes']['tenantName'])
-            self.description = replace_empty_entries(json_entry['hcloudCtx']['attributes']['description'])
-            self.name_alias = replace_empty_entries(json_entry['hcloudCtx']['attributes']['nameAlias'])
-            self.ctx_profile_name = replace_empty_entries(json_entry['hcloudCtx']['attributes']['ctxProfileName'])
+            self.name = self.replace_empty_entries(json_entry['hcloudCtx']['attributes']['name'])
+            self.tenant_name = self.replace_empty_entries(json_entry['hcloudCtx']['attributes']['tenantName'])
+            self.description = self.replace_empty_entries(json_entry['hcloudCtx']['attributes']['description'])
+            self.name_alias = self.replace_empty_entries(json_entry['hcloudCtx']['attributes']['nameAlias'])
+            self.ctx_profile_name = self.replace_empty_entries(json_entry['hcloudCtx']['attributes']['ctxProfileName'])
             if len(json_entry['hcloudCtx']['children']) > 0:
                 self.HealthInst = HealthInst(json_entry['hcloudCtx']['children'][0]['healthInst']['attributes']['cur'],
                                              json_entry['hcloudCtx']['children'][0]['healthInst']['attributes']['maxSev'])
@@ -42,6 +37,12 @@ class CloudCtx:
                 self.HealthInst = HealthInst(0)
         except KeyError:
             print("The json entry was invalid")
+
+    def replace_empty_entries(self, value=""):
+        if value == '':
+            return '-'
+        else:
+            return value
 
     @staticmethod
     def check_number_of_entries():
