@@ -8,4 +8,4 @@ jobs:
   pull_request_opened:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "This PR was approved"
+      - run: echo "This PR was opened"
