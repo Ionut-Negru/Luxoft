@@ -5,10 +5,8 @@ on:
       - submitted
     
 jobs:
-  build:
-    runs-on: self-hosted
+  approved:
+    if: github.event.review.state == "APPROVED"
+    runs-on: ubunt-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: approval_trigger
-      - if: github.event.review.state == 'approved'
-        run: echo "Approved an pr"
+      - run: echo "This PR was approved"
