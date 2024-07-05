@@ -8,4 +8,5 @@ jobs:
   pull_request_opened:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "This PR was approved"
+      - uses: actions/setup-python@v2
+      - run: python check_pdb_instance.py
