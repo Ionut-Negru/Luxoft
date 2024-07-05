@@ -1,7 +1,7 @@
 # utils.py
 """This file contains utilitary functions for the project"""
 
-
+import pdb
 def show_cloud_ctx_data(data=[]):
     for x in data:
         print(x)
