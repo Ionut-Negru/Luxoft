@@ -11,5 +11,4 @@ jobs:
       - uses: actions/checkout@v2
       - name: approval_trigger
       - if: github.event.review.state == 'approved'
-        run:
-          echo "Approved an pr"
+        run: echo "Approved an pr"
