@@ -1,7 +1,7 @@
 # HealthInst.py
 """This class holds the information for a healthInst MO"""
 
-
+import pdb
 class HealthInst:
 
     def __init__(self, current_health=0, max_sev=0):
