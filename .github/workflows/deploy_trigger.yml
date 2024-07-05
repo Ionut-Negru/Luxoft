@@ -1,0 +1,15 @@
+name: Deployment
+on:
+  pull_request_review:
+    types:
+      - submitted
+    
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: approval_trigger
+      - if: github.event.review.state == 'approved'
+        run:
+          echo "Approved an pr"
