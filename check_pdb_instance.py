@@ -14,12 +14,11 @@ for root, dirs, files in os.walk(Path(__file__).parent.resolve()):
             file_content = file_path.read_text()
             if "pdb.set_trace()" in file_content:
                 print(f"{complete_path} has pdb set_trace() present.")
-                found_pdb = True
+                os._exit(1)
             elif "import pdb" in file_content:
                 print(f"{complete_path} has a pdb module present.")
-                found_pdb = True
+                os._exit(1)
 
-if not found_pdb:
-    print("No PDB instance found")
+os._exit(0)
 
 
